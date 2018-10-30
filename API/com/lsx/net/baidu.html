@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <link rel="canonical" href="https://blog.csdn.net/weixin_42961627/article/details/81639499"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="renderer" content="webkit"/>
+    <meta name="force-rendering" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="referrer" content="always">
+    <meta name="description" content="from urllib import request (负责打开浏览url内的html 文本)
+
+request.Request() (把所需要的请求参数进行打包,然后一起交给urlopen 进行请求)
+	
+
+	定义headers-User_Agent
+		
+			
+			
+		
+	
+	request.urlopen()
+	
+	
+	response.read() 响应对象 返回url请求的html..." />
+    <meta name="keywords" content="爬虫,urllib" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" /><link rel="alternate" media="handheld" href="#" />
+    <meta name="shenma-site-verification" content="5a59773ab8077d4a62bf469ab966a63b_1497598848">
+    <script src="https://csdnimg.cn/release/phoenix/vendor/tingyun/tingyun-rum-blog.js"></script>
+
+    <link href="https://csdnimg.cn/public/favicon.ico" rel="SHORTCUT ICON">
+    <title>from urllib import request 介绍以及用法 - 将代码照进现实 - CSDN博客</title>
+
+            <link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/template/css/detail-1d7a61b254.min.css">
+        <link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/themes/skin3-template/skin3-template-9b39979775.min.css">
+
+    <script type="text/javascript">
+        var username = "weixin_42961627";
+        var blog_address = "https://blog.csdn.net/weixin_42961627";
+        var static_host = "https://csdnimg.cn/release/phoenix/";
+        var currentUserName = "";
+        var isShowAds = true;
+        var isOwner = false;
+        var loginUrl = "http://passport.csdn.net/account/login?from=https://blog.csdn.net/weixin_42961627/article/details/81639499"
+        var blogUrl = "https://blog.csdn.net/";
+        //页面皮肤样式
+        var curSkin = "skin3-template";
+        // 第四范式所需数据
+        var articleTitles = "from urllib import request 介绍以及用法 - 将代码照进现实";
+        var articleID = "81639499";
+
+        var nickName = "早日成仙";
+    </script>
+    <script type="text/javascript">
+        // Traffic Stats of the entire Web site By baidu
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?6bcd52f51e9b3dce32bec4a3997715ac";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+        // Traffic Stats of the entire Web site By baidu end
+    </script>
+    <script src="https://csdnimg.cn/public/common/libs/jquery/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="https://csdnimg.cn/rabbit/exposure-click/main-1.0.6.js"></script>
+    <!-- 新版上报 -->
+    <script src="//g.csdnimg.cn/track/1.1.1/track.js" type="text/javascript"></script>
+    <!-- 新版上报end -->
+            <link rel="stylesheet" href="https://csdnimg.cn/public/sandalstrap/1.4/css/sandalstrap.min.css">
+    <style>
+        .MathJax, .MathJax_Message, .MathJax_Preview{
+            display: none
+        }
+    </style>
+</head>
+<!-- nodata 第三栏接口无数据时样式不变 -->
+<body class="nodata"> 
+    <link rel="stylesheet" href="https://csdnimg.cn/public/common/toolbar/content_toolbar_css/content_toolbar.css">
+    <script id="toolbar-tpl-scriptId" src="https://csdnimg.cn/public/common/toolbar/js/content_toolbar.js" type="text/javascript" domain="https://blog.csdn.net/"></script>
+<link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/template/css/blog_code-c3a0c33d5c.css">
+<link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/vendor/pagination/paging.css">
+<script type="text/javascript" src="//static.mediav.com/js/mvf_news_feed.js"></script>
+<script type="text/javascript" src="//g.csdnimg.cn/copyright/1.0.3/copyright.js"></script>
+<div style="display:none;">
+	<img src="" onerror='setTimeout(function(){if(!/(csdn.net|iteye.com|baiducontent.com|googleusercontent.com|360webcache.com|sogoucdn.com|bingj.com|baidu.com)$/.test(window.location.hostname)){window.location.href="\x68\x74\x74\x70\x73\x3a\x2f\x2f\x77\x77\x77\x2e\x63\x73\x64\x6e\x2e\x6e\x65\x74"}},3000);'>
+</div>
+<link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/template/css/chart-3456820cac.css" />
+
+
+
+<script src="https://dup.baidustatic.com/js/ds.js"></script>
+<div class="container clearfix" id="mainBox">
+		<div class="recommend-right">
+  <ul class="recommend-fixed-box">
+    
+  </ul>
+</div>
+    <main>
+        <div class="blog-content-box">
+	<div class="article-header-box">
+		<div class="article-header">
+			<div class="article-title-box">
+				<span class="article-type type-1 float-left">原</span>				<h1 class="title-article">from urllib import request 介绍以及用法</h1>
+			</div>
+			<div class="article-info-box">
+				<div class="article-bar-top">
+																				<span class="time">2018年08月14日 00:09:54</span>
+					<a class="follow-nickName" href="https://me.csdn.net/weixin_42961627" target="_blank">早日成仙</a>
+						<span class="read-count">阅读数：465</span>
+						
+														<span class="tags-box artic-tag-box">
+								<span class="label">标签：</span>
+																<a data-track-click='{"mod":"popu_626","con":"爬虫"}' data-track-view='{"mod":"popu_626","con":"爬虫"}' class="tag-link" href="http://so.csdn.net/so/search/s.do?q=爬虫&t=blog" target="_blank">爬虫																<a data-track-click='{"mod":"popu_626","con":"urllib"}' data-track-view='{"mod":"popu_626","con":"urllib"}' class="tag-link" href="http://so.csdn.net/so/search/s.do?q=urllib&t=blog" target="_blank">urllib																<a data-track-click='{"mod":"popu_626","con":"request"}' data-track-view='{"mod":"popu_626","con":"request"}' class="tag-link" href="http://so.csdn.net/so/search/s.do?q=request&t=blog" target="_blank">request																</a>
+							</span>
+																															</div>
+				<div class="operating">
+														</div>
+			</div>
+		</div>
+	</div>
+	<article>
+		<div id="article_content" class="article_content clearfix csdn-tracking-statistics" data-pid="blog"  data-mod=popu_307  data-dsm = "post" >
+								            <link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/template/css/ck_htmledit_views-e4c7a3727d.css" />
+						<div class="htmledit_views">
+                <p>from urllib import request (负责打开浏览url内的html 文本)</p>
+
+<ul><li>request.Request() (把所需要的请求参数进行打包,然后一起交给urlopen 进行请求)
+	<p><img alt="" class="has" src="https://img.mubu.com/document_image/0162f323-355e-424d-8902-a972317b1159-736787.jpg" /></p>
+
+	<ul><li>定义headers-User_Agent
+		<ul><li>
+			<p><img alt="" class="has" src="https://img.mubu.com/document_image/ce47a025-ea16-4a32-b08b-44c15bafbaf4-736787.jpg" /></p>
+			</li>
+		</ul></li>
+	</ul></li>
+	<li>request.urlopen()
+	<p><img alt="" class="has" src="https://img.mubu.com/document_image/28dcc46a-f2fa-4779-88eb-e87e66d7fdb2-736787.jpg" /></p>
+	</li>
+	<li>response.read() 响应对象 返回url请求的html文本</li>
+</ul>            </div>
+                </div>
+									<div class="hide-article-box text-center">
+						<a class="btn" id="btn-readmore" data-track-view='{"mod":"popu_376","con":",https://blog.csdn.net/weixin_42961627/article/details/81639499,"}' data-track-click='{"mod":"popu_376","con":",https://blog.csdn.net/weixin_42961627/article/details/81639499,"}'>阅读更多</a>
+					</div>
+					<script>
+						(function(){
+							function setArticleH(btnReadmore,posi){
+								var winH = $(window).height();
+								var articleBox = $("div.article_content");
+								var artH = articleBox.height();
+								if(artH > winH*posi){
+									articleBox.css({
+										'height':winH*posi+'px',
+										'overflow':'hidden'
+									})
+									btnReadmore.click(function(){
+										articleBox.removeAttr("style");
+										$(this).parent().remove();
+									})
+								}else{
+									btnReadmore.parent().remove();
+								}
+							}
+							var btnReadmore = $("#btn-readmore");
+							if(btnReadmore.length>0){
+								if(currentUserName){
+									setArticleH(btnReadmore,3);
+								}else{
+									setArticleH(btnReadmore,1.2);
+								}
+							}
+						})()
+					</script>
+					</article>
+	
+</div>
+<script>
+		$(".MathJax").remove();
+		if($('div.markdown_views pre.prettyprint code.hljs').length > 0 ){
+				$('div.markdown_views')[0].className = 'markdown_views';
+		}
+</script>
+        <div class="p4course_target" ></div><script>window.p4sdk_enable_courseBox=true</script>        <a id="commentBox"></a>
+<div class="comment-box">
+	  	<div class="unlogin-box text-center">
+		想对作者说点什么？
+		<!-- $curl 当前地址 -->
+		<button id="btnCommentUnlogin" class="btn btn-sm btn-red">我来说一句</button>
+	</div>
+			<div class="comment-list-container">
+		<a id="comments"></a>
+		<div class="comment-list-box">
+		</div>
+		<div id="commentPage" class="pagination-box d-none"></div>
+		<div class="opt-box text-center">
+			<button class="btn btn-sm btn-link-blue" id="btnMoreComment"></button>
+		</div>
+	</div>
+</div>
+        <div class="recommend-box">
+            		<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_387","con":",https://blog.csdn.net/IMW_MG/article/details/78555375,BlogCommendFromBaidu_8"}' data-track-click='{"mod":"popu_387","con":",https://blog.csdn.net/IMW_MG/article/details/78555375,BlogCommendFromBaidu_8"}'>
+			<div class="content">
+				<a href="https://blog.csdn.net/IMW_MG/article/details/78555375?utm_source=blogxgwz0" target="_blank" title="Python2和Python3中urllib库中urlencode的使用注意事项">
+				<h4 class="text-truncate oneline">
+						Python2和Python3中<em>urllib</em>库中urlencode的使用注意事项				</h4>
+				<div class="info-box d-flex align-content-center">
+					<!-- <p class="avatar">
+							<img src="https://avatar.csdn.net/4/4/C/3_imw_mg.jpg" alt="IMW_MG" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">IMW_MG</span>
+								<span class="triangle"></span>
+							</span>
+					</p> -->
+					<p class="date-and-readNum">
+						<span class="date hover-show">11-16</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-m-passwords-visible"></use>
+							</svg>
+							2.7万</span>
+						</p>
+					</div>
+				</a>
+					<p class="content">
+						<a href="https://blog.csdn.net/IMW_MG/article/details/78555375?utm_source=blogxgwz0" target="_blank" title="Python2和Python3中urllib库中urlencode的使用注意事项">
+							<span class="desc oneline">前言在Python中，我们通常使用urllib中的urlencode方法将字典编码，用于提交数据给url等操作，但是在Python2和Python3中urllib模块中所提供的urlencode的包位...</span>
+						</a>
+                        						<span class="blog_title_box oneline"><a target="_blank" href="https://blog.csdn.net/IMW_MG?utm_source=blog_pc_recommand">来自：	<span class="blog_title"> 吴芒果的博客</span></a></span>
+                        					</p>
+			</div>
+					</div>
+	
+    
+	
+    		<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_387","con":",https://blog.csdn.net/chmod_R_755/article/details/53411657,BlogCommendFromBaidu_0"}' data-track-click='{"mod":"popu_387","con":",https://blog.csdn.net/chmod_R_755/article/details/53411657,BlogCommendFromBaidu_0"}'>
+			<div class="content">
+				<a href="https://blog.csdn.net/chmod_R_755/article/details/53411657?utm_source=blogxgwz1" target="_blank" title="python import urllib.request  ImportError: No module named request">
+				<h4 class="text-truncate oneline">
+						python <em>import</em> <em>urllib</em>.<em>request</em>  <em>Import</em>Error: No module named <em>request</em>				</h4>
+				<div class="info-box d-flex align-content-center">
+					<!-- <p class="avatar">
+							<img src="https://avatar.csdn.net/4/F/2/3_chmod_r_755.jpg" alt="chmod_R_755" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">chmod_R_755</span>
+								<span class="triangle"></span>
+							</span>
+					</p> -->
+					<p class="date-and-readNum">
+						<span class="date hover-show">11-30</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-m-passwords-visible"></use>
+							</svg>
+							5922</span>
+						</p>
+					</div>
+				</a>
+					<p class="content">
+						<a href="https://blog.csdn.net/chmod_R_755/article/details/53411657?utm_source=blogxgwz1" target="_blank" title="python import urllib.request  ImportError: No module named request">
+							<span class="desc oneline">首先这个问题很蛋疼，but 我已经解决了，方案如下
+如果你遇到了这个问题，相信你对
+
+
+
+
+或许你跟我一样遇到了这蛋疼的问题 。。。  
+原因很简单，就是少包了呗。。。 
+第一步： 你...</span>
+						</a>
+                        						<span class="blog_title_box oneline"><a target="_blank" href="https://blog.csdn.net/chmod_R_755?utm_source=blog_pc_recommand">来自：	<span class="blog_title"> chmod_R_755的专栏</span></a></span>
+                        					</p>
+			</div>
+					</div>
+	
+    
+	
+    		<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_387","con":",https://blog.csdn.net/bo_mask/article/details/76067790,BlogCommendFromBaidu_1"}' data-track-click='{"mod":"popu_387","con":",https://blog.csdn.net/bo_mask/article/details/76067790,BlogCommendFromBaidu_1"}'>
+			<div class="content">
+				<a href="https://blog.csdn.net/bo_mask/article/details/76067790?utm_source=blogxgwz2" target="_blank" title="python3网络爬虫一《使用urllib.request发送请求》">
+				<h4 class="text-truncate oneline">
+						python3网络爬虫一《使用<em>urllib</em>.<em>request</em>发送请求》				</h4>
+				<div class="info-box d-flex align-content-center">
+					<!-- <p class="avatar">
+							<img src="https://avatar.csdn.net/9/B/5/3_bo_mask.jpg" alt="bo_mask" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">bo_mask</span>
+								<span class="triangle"></span>
+							</span>
+					</p> -->
+					<p class="date-and-readNum">
+						<span class="date hover-show">07-25</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-m-passwords-visible"></use>
+							</svg>
+							4.9万</span>
+						</p>
+					</div>
+				</a>
+					<p class="content">
+						<a href="https://blog.csdn.net/bo_mask/article/details/76067790?utm_source=blogxgwz2" target="_blank" title="python3网络爬虫一《使用urllib.request发送请求》">
+							<span class="desc oneline">有兴趣的可以加一下python爱好者的QQ群：152376662这里有很多像你一样的伙伴，共同分享学习python的经验！使用urllib在Python2版本中，有urllib和urlib2两个库可以...</span>
+						</a>
+                        						<span class="blog_title_box oneline"><a target="_blank" href="https://blog.csdn.net/bo_mask?utm_source=blog_pc_recommand">来自：	<span class="blog_title"> bo_mask的博客</span></a></span>
+                        					</p>
+			</div>
+					</div>
+	
+    <!-- 第四范式广告开关 -->
+				<div class="p4courset3_target _4paradigm_box recommend-item-box clearfix" ></div>
+				<script>window.p4sdk_enable_recommendBox=true</script>
+	
+    		<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_387","con":",https://blog.csdn.net/ajinglingmofashi/article/details/53611168,BlogCommendFromBaidu_2"}' data-track-click='{"mod":"popu_387","con":",https://blog.csdn.net/ajinglingmofashi/article/details/53611168,BlogCommendFromBaidu_2"}'>
+			<div class="content">
+				<a href="https://blog.csdn.net/ajinglingmofashi/article/details/53611168?utm_source=blogxgwz3" target="_blank" title="一个超级傻的错误--import urllib.request 报错">
+				<h4 class="text-truncate oneline">
+						一个超级傻的错误--<em>import</em> <em>urllib</em>.<em>request</em> 报错				</h4>
+				<div class="info-box d-flex align-content-center">
+					<!-- <p class="avatar">
+							<img src="https://avatar.csdn.net/B/C/F/3_ajinglingmofashi.jpg" alt="ajinglingmofashi" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">ajinglingmofashi</span>
+								<span class="triangle"></span>
+							</span>
+					</p> -->
+					<p class="date-and-readNum">
+						<span class="date hover-show">12-13</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-m-passwords-visible"></use>
+							</svg>
+							1.8万</span>
+						</p>
+					</div>
+				</a>
+					<p class="content">
+						<a href="https://blog.csdn.net/ajinglingmofashi/article/details/53611168?utm_source=blogxgwz3" target="_blank" title="一个超级傻的错误--import urllib.request 报错">
+							<span class="desc oneline">在看了网上的爬虫教程后，我信心满满的写了一个名为urllib.py的文件想试验一下网上的方法，内容很简单：import urllib.requesturl = &quot;http://www.baidu.co...</span>
+						</a>
+                        						<span class="blog_title_box oneline"><a target="_blank" href="https://blog.csdn.net/ajinglingmofashi?utm_source=blog_pc_recommand">来自：	<span class="blog_title"> 什么博客？</span></a></span>
+                        					</p>
+			</div>
+					</div>
+	
+    
+	
+    		<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_387","con":",https://blog.csdn.net/qq_36279445/article/details/80019330,BlogCommendFromBaidu_3"}' data-track-click='{"mod":"popu_387","con":",https://blog.csdn.net/qq_36279445/article/details/80019330,BlogCommendFromBaidu_3"}'>
+			<div class="content">
+				<a href="https://blog.csdn.net/qq_36279445/article/details/80019330?utm_source=blogxgwz4" target="_blank" title="Python_from urllib import request 报错,找不到request">
+				<h4 class="text-truncate oneline">
+						Python_<em>from</em> <em>urllib</em> <em>import</em> <em>request</em> 报错,找不到<em>request</em>				</h4>
+				<div class="info-box d-flex align-content-center">
+					<!-- <p class="avatar">
+							<img src="https://avatar.csdn.net/D/D/B/3_qq_36279445.jpg" alt="qq_36279445" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">qq_36279445</span>
+								<span class="triangle"></span>
+							</span>
+					</p> -->
+					<p class="date-and-readNum">
+						<span class="date hover-show">04-20</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-m-passwords-visible"></use>
+							</svg>
+							1701</span>
+						</p>
+					</div>
+				</a>
+					<p class="content">
+						<a href="https://blog.csdn.net/qq_36279445/article/details/80019330?utm_source=blogxgwz4" target="_blank" title="Python_from urllib import request 报错,找不到request">
+							<span class="desc oneline">1.  没安装urllib    pip install urllib2.可能你的文件名是。。。urllib.py    改名</span>
+						</a>
+                        						<span class="blog_title_box oneline"><a target="_blank" href="https://blog.csdn.net/qq_36279445?utm_source=blog_pc_recommand">来自：	<span class="blog_title"> Martin 的博客</span></a></span>
+                        					</p>
+			</div>
+					</div>
+	
+    
+	
+    		<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_387","con":",https://blog.csdn.net/drdairen/article/details/51149498,BlogCommendFromBaidu_4"}' data-track-click='{"mod":"popu_387","con":",https://blog.csdn.net/drdairen/article/details/51149498,BlogCommendFromBaidu_4"}'>
+			<div class="content">
+				<a href="https://blog.csdn.net/drdairen/article/details/51149498?utm_source=blogxgwz5" target="_blank" title="详解：Python2中的urllib、urllib2与Python3中的urllib以及第三方模块requests">
+				<h4 class="text-truncate oneline">
+						详解：Python2中的<em>urllib</em>、<em>urllib</em>2与Python3中的<em>urllib</em><em>以及</em>第三方模块<em>request</em>s				</h4>
+				<div class="info-box d-flex align-content-center">
+					<!-- <p class="avatar">
+							<img src="https://avatar.csdn.net/B/C/1/3_drdairen.jpg" alt="drdairen" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">drdairen</span>
+								<span class="triangle"></span>
+							</span>
+					</p> -->
+					<p class="date-and-readNum">
+						<span class="date hover-show">04-14</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-m-passwords-visible"></use>
+							</svg>
+							5.9万</span>
+						</p>
+					</div>
+				</a>
+					<p class="content">
+						<a href="https://blog.csdn.net/drdairen/article/details/51149498?utm_source=blogxgwz5" target="_blank" title="详解：Python2中的urllib、urllib2与Python3中的urllib以及第三方模块requests">
+							<span class="desc oneline">先说说Python2中的url与urllib2（参考此处）：
+
+
+urllib和urllib2都是接受URL请求的相关模块，但是提供了不同的功能。两个最显著的不同如下：
+
+1、urllib2可以接受一...</span>
+						</a>
+                        						<span class="blog_title_box oneline"><a target="_blank" href="https://blog.csdn.net/drdairen?utm_source=blog_pc_recommand">来自：	<span class="blog_title"> 夜夜夜夜</span></a></span>
+                        					</p>
+			</div>
+					</div>
+	
+    
+	
+    		<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_387","con":",https://blog.csdn.net/weixin_37598106/article/details/72847394,BlogCommendFromBaidu_5"}' data-track-click='{"mod":"popu_387","con":",https://blog.csdn.net/weixin_37598106/article/details/72847394,BlogCommendFromBaidu_5"}'>
+			<div class="content">
+				<a href="https://blog.csdn.net/weixin_37598106/article/details/72847394?utm_source=blogxgwz6" target="_blank" title="最基础的urllib.request.urlopen()基本使用">
+				<h4 class="text-truncate oneline">
+						最基础的<em>urllib</em>.<em>request</em>.urlopen()基本使用				</h4>
+				<div class="info-box d-flex align-content-center">
+					<!-- <p class="avatar">
+							<img src="https://avatar.csdn.net/B/5/6/3_weixin_37598106.jpg" alt="weixin_37598106" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">weixin_37598106</span>
+								<span class="triangle"></span>
+							</span>
+					</p> -->
+					<p class="date-and-readNum">
+						<span class="date hover-show">06-02</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-m-passwords-visible"></use>
+							</svg>
+							6977</span>
+						</p>
+					</div>
+				</a>
+					<p class="content">
+						<a href="https://blog.csdn.net/weixin_37598106/article/details/72847394?utm_source=blogxgwz6" target="_blank" title="最基础的urllib.request.urlopen()基本使用">
+							<span class="desc oneline">'简单的用python3访问python官网'
+import urllib.requesturl = 'https://www.python.org'#req = urllib.request.Req...</span>
+						</a>
+                        						<span class="blog_title_box oneline"><a target="_blank" href="https://blog.csdn.net/weixin_37598106?utm_source=blog_pc_recommand">来自：	<span class="blog_title"> weixin_37598106的博客</span></a></span>
+                        					</p>
+			</div>
+					</div>
+	
+    
+	
+    		<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_387","con":",https://blog.csdn.net/ww0440ww/article/details/54730335,BlogCommendFromBaidu_6"}' data-track-click='{"mod":"popu_387","con":",https://blog.csdn.net/ww0440ww/article/details/54730335,BlogCommendFromBaidu_6"}'>
+			<div class="content">
+				<a href="https://blog.csdn.net/ww0440ww/article/details/54730335?utm_source=blogxgwz7" target="_blank" title="urllib.urlopen已替换为urllib.request.urlopen()">
+				<h4 class="text-truncate oneline">
+						<em>urllib</em>.urlopen已替换为<em>urllib</em>.<em>request</em>.urlopen()				</h4>
+				<div class="info-box d-flex align-content-center">
+					<!-- <p class="avatar">
+							<img src="https://avatar.csdn.net/9/A/9/3_ww0440ww.jpg" alt="ww0440ww" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">ww0440ww</span>
+								<span class="triangle"></span>
+							</span>
+					</p> -->
+					<p class="date-and-readNum">
+						<span class="date hover-show">01-25</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-m-passwords-visible"></use>
+							</svg>
+							1486</span>
+						</p>
+					</div>
+				</a>
+					<p class="content">
+						<a href="https://blog.csdn.net/ww0440ww/article/details/54730335?utm_source=blogxgwz7" target="_blank" title="urllib.urlopen已替换为urllib.request.urlopen()">
+							<span class="desc oneline">python3已经将2.6之前的urllib.urlopen停用，现已替换为urllib.request.urlopen(). 
+使用webpage.read()读取的页面内容text内容为bytes...</span>
+						</a>
+                        						<span class="blog_title_box oneline"><a target="_blank" href="https://blog.csdn.net/ww0440ww?utm_source=blog_pc_recommand">来自：	<span class="blog_title"> ww0440ww的博客</span></a></span>
+                        					</p>
+			</div>
+					</div>
+	
+    <div class="recommend-item-box recommend-ad-box"><div id="kp_box_43" data-pid="60" data-track-view='{"mod":"kp_popu_43","con":",,"}'><div id="three_ad8" class="mediav_ad" ></div>
+<script type="text/javascript" src="//static.mediav.com/js/mvf_news_feed.js"></script>
+<script>
+                                               NEWS_FEED({
+                w: 900,
+                h : 84,
+                showid : 'Afihld',
+                placeholderId: "three_ad8",
+                inject : 'define',
+                define : {
+                    imagePosition : 'left',
+                    imageBorderRadius : 3,
+                    imageWidth: 90,
+                    imageHeight: 60,
+                    imageFill : 'clip',
+                    displayImage : true,
+                    displayTitle : true,
+                    titleFontSize: 16,
+                    titleFontColor: '#000',
+                    titleFontFamily : 'Microsoft Yahei',
+                    titleFontWeight: 'bold',
+                    titlePaddingTop : 0,
+                    titlePaddingRight : 0,
+                    titlePaddingBottom : 5,
+                    titlePaddingLeft : 16,
+                    displayDesc : true,
+                    descFontSize: 12,
+                    descFontColor: '#8e959a',
+                    descFontFamily : 'Microsoft Yahei',
+                    paddingTop : 10,
+                    paddingRight : 0,
+                    paddingBottom : 0,
+                    paddingLeft : 0,
+                    backgroundColor: '#fff',
+                    hoverColor: '#000'
+                      }
+                  })
+                                        </script></div><script>$(function(){csdn.track.viewCheck($("#kp_box_43"));});</script></div>
+	
+    		<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_387","con":",https://blog.csdn.net/pythonniu/article/details/51855035,BlogCommendFromBaidu_7"}' data-track-click='{"mod":"popu_387","con":",https://blog.csdn.net/pythonniu/article/details/51855035,BlogCommendFromBaidu_7"}'>
+			<div class="content">
+				<a href="https://blog.csdn.net/pythonniu/article/details/51855035?utm_source=blogxgwz8" target="_blank" title="python3关于urllib中urlopen报错问题的解决">
+				<h4 class="text-truncate oneline">
+						python3关于<em>urllib</em>中urlopen报错问题的解决				</h4>
+				<div class="info-box d-flex align-content-center">
+					<!-- <p class="avatar">
+							<img src="https://avatar.csdn.net/5/7/8/3_pythonniu.jpg" alt="pythonniu" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">pythonniu</span>
+								<span class="triangle"></span>
+							</span>
+					</p> -->
+					<p class="date-and-readNum">
+						<span class="date hover-show">07-07</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-m-passwords-visible"></use>
+							</svg>
+							3.4万</span>
+						</p>
+					</div>
+				</a>
+					<p class="content">
+						<a href="https://blog.csdn.net/pythonniu/article/details/51855035?utm_source=blogxgwz8" target="_blank" title="python3关于urllib中urlopen报错问题的解决">
+							<span class="desc oneline">00x0 前言
+   最近更新了python版本，准备写个爬虫，意外的发现urllib库中属性不存在urlopen，于是各种google，然后总结一下给出解决方案
+
+  
+
+00x1 问题的...</span>
+						</a>
+                        						<span class="blog_title_box oneline"><a target="_blank" href="https://blog.csdn.net/pythonniu?utm_source=blog_pc_recommand">来自：	<span class="blog_title"> pythonniu的博客</span></a></span>
+                        					</p>
+			</div>
+					</div>
+	
+    
+			<div class="recommend-item-box type_hot_word">
+									<div class="content clearfix oneline">
+				<h5 class="float-left">相关热词</h5>
+				<div class="float-left">
+									<span>
+						<a href="https://blog.csdn.net/ljjzj/article/details/78534162" target="_blank">
+						from</a>
+					</span>
+									<span>
+						<a href="https://blog.csdn.net/airfish20000/article/details/60866473" target="_blank">
+						多图上传from</a>
+					</span>
+									<span>
+						<a href="https://blog.csdn.net/huanglianggu/article/details/80629932" target="_blank">
+						from登陆</a>
+					</span>
+									<span>
+						<a href="https://blog.csdn.net/hemeinvyiqiluoben/article/details/9899201" target="_blank">
+						from嵌套</a>
+					</span>
+									<span>
+						<a href="https://blog.csdn.net/pipisorry/article/details/50805379" target="_blank">
+						from镜像</a>
+					</span>
+								</div>
+			</div>
+					</div>
+	
+    		<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_387","con":",https://blog.csdn.net/sck03407/article/details/78060737,BlogCommendFromBaidu_9"}' data-track-click='{"mod":"popu_387","con":",https://blog.csdn.net/sck03407/article/details/78060737,BlogCommendFromBaidu_9"}'>
+			<div class="content">
+				<a href="https://blog.csdn.net/sck03407/article/details/78060737?utm_source=blogxgwz9" target="_blank" title="urllib模块的使用">
+				<h4 class="text-truncate oneline">
+						<em>urllib</em>模块的使用				</h4>
+				<div class="info-box d-flex align-content-center">
+					<!-- <p class="avatar">
+							<img src="https://avatar.csdn.net/C/3/8/3_sck03407.jpg" alt="sck03407" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">sck03407</span>
+								<span class="triangle"></span>
+							</span>
+					</p> -->
+					<p class="date-and-readNum">
+						<span class="date hover-show">09-22</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-m-passwords-visible"></use>
+							</svg>
+							325</span>
+						</p>
+					</div>
+				</a>
+					<p class="content">
+						<a href="https://blog.csdn.net/sck03407/article/details/78060737?utm_source=blogxgwz9" target="_blank" title="urllib模块的使用">
+							<span class="desc oneline">1.基本方法
+
+urllib.request.urlopen(url, data=None, [timeout, ]*, cafile=None, capath=None, cadefault=Fal...</span>
+						</a>
+                        						<span class="blog_title_box oneline"><a target="_blank" href="https://blog.csdn.net/sck03407?utm_source=blog_pc_recommand">来自：	<span class="blog_title"> sck03407的博客</span></a></span>
+                        					</p>
+			</div>
+					</div>
+	
+    
+	
+    	<div class="recommend-item-box blog-expert-recommend-box">
+			<h4 class="text-truncate">博主推荐
+			</h4>
+			<div class="blog-expert-recommend">
+				<div class="blog-expert-load-new" data-index="3">
+					<svg version="1.1" viewBox="0 0 200 200" style="enable-background:new 0 0 200 200;" xml:space="preserve">
+					<path d="M142.5,57.5c-1.3-1.2-2.1-3.3-2.1-5.4c0-4.2,3.3-7.5,7.5-7.5h19.6c4.2,0,7.5,3.3,7.5,7.5s-3.3,7.5-7.5,7.5h-4.2
+					 C170.8,71.2,175,85,175,100c0,41.7-33.8,75-75,75c-4.2,0-7.5-3.3-7.5-7.5c0-4.2,3.3-7.5,7.5-7.5c33.3,0,60-27.1,60-60
+					 C160,83.7,153.8,68.7,142.5,57.5L142.5,57.5z M57.5,142.5c1.2,1.2,2.1,3.3,2.1,5.4c0,4.2-3.3,7.5-7.5,7.5H32.5
+					 c-4.2,0-7.5-3.3-7.5-7.5c0-4.2,3.3-7.5,7.5-7.5h4.2C29.2,128.8,25,115,25,100c0-41.7,33.7-75,75-75c4.2,0,7.5,3.3,7.5,7.5
+					 S104.2,40,100,40c-33.3,0-60,27.1-60,60C40,116.2,46.2,131.2,57.5,142.5z"/>
+					</svg>
+					<span>换一批</span>
+				</div>
+				<div class="blog-expert">
+				</div>
+			</div>
+		</div>
+
+
+            <div class="recommend-loading-box">
+                <img src='https://csdnimg.cn/release/phoenix/images/feedLoading.gif'>
+            </div>
+            <div class="recommend-end-box">
+                <p class="text-center">没有更多推荐了，<a href="https://blog.csdn.net/" class="c-blue c-blue-hover c-blue-focus">返回首页</a></p>
+            </div>
+        </div>
+    </main>
+
+    <aside>
+		    <div id="asideProfile" class="aside-box">
+    <!-- <h3 class="aside-title">个人资料</h3> -->
+    <div class="profile-intro d-flex">
+        <div class="avatar-box d-flex justify-content-center flex-column">
+            <a href="https://blog.csdn.net/weixin_42961627">
+                <img src="https://avatar.csdn.net/D/3/A/3_weixin_42961627.jpg" class="avatar_pic">
+            </a>
+        </div>
+        <div class="user-info d-flex justify-content-center flex-column">
+            <p class="name csdn-tracking-statistics tracking-click" data-mod="popu_379">
+                <a href="https://blog.csdn.net/weixin_42961627" target="_blank" class="" id="uid">早日成仙</a>
+            </p>
+                    </div>
+                <div class="opt-box d-flex justify-content-center flex-column">
+            <span  class="csdn-tracking-statistics tracking-click" data-mod="popu_379">
+                <a class="btn btn-sm btn-red-hollow attention" id="btnAttent">关注</a>
+            </span>
+                    </div>
+            </div>
+    <div class="data-info d-flex item-tiling">
+                <dl class="text-center" title="8">
+                        <dt><a href="https://blog.csdn.net/weixin_42961627?t=1">原创</a></dt>
+            <dd><a href="https://blog.csdn.net/weixin_42961627?t=1"><span class="count">8</span></a></dd>
+                    </dl>
+        <dl class="text-center" id="fanBox" title="1">
+            <dt>粉丝</dt>
+            <dd><span class="count" id="fan">1</span></dd>
+        </dl>
+        <dl class="text-center" title="0">
+            <dt>喜欢</dt>
+            <dd><span class="count">0</span></dd>
+        </dl>
+        <dl class="text-center" title="1">
+            <dt>评论</dt>
+            <dd><span class="count">1</span></dd>
+        </dl>
+    </div>
+    <div class="grade-box clearfix">
+        <dl>
+            <dt>等级：</dt>
+            <dd>
+                <a href="https://blog.csdn.net/home/help.html#level" title="1级,点击查看等级说明" target="_blank">
+                    <svg class="icon icon-level" aria-hidden="true">
+                        <use xlink:href="#csdnc-bloglevel-1"></use>
+                    </svg>
+                </a>
+            </dd>
+        </dl>
+        <dl>
+            <dt>访问：</dt>
+            <dd title="754">
+                754            </dd>
+        </dl>
+        <dl>
+            <dt>积分：</dt>
+            <dd title="89">
+                89            </dd>
+        </dl>
+        <dl title="1561357">
+            <dt>排名：</dt>
+            <dd>156万+</dd>
+        </dl>
+    </div>
+    </div>
+		    <div class="csdn-tracking-statistics mb8 box-shadow" data-pid="blog" data-mod="popu_4" style="height:250px;">
+    <div class="aside-content text-center" id="cpro_u2734133">
+      <div id="kp_box_76" data-pid="56" data-track-view='{"mod":"kp_popu_76","con":",,"}'><script type="text/javascript" src="//rabc1.iteye.com/source/openjs/api/mbxf4.js?b=wocoltly"></script></div><script>$(function(){csdn.track.viewCheck($("#kp_box_76"));});</script>    </div>
+</div>
+		    <div id="asideNewArticle" class="aside-box">
+    <h3 class="aside-title">最新文章</h3>
+    <div class="aside-content">
+        <ul class="inf_list clearfix csdn-tracking-statistics tracking-click" data-mod="popu_382">
+                        <li class="clearfix">
+                <a href="https://blog.csdn.net/weixin_42961627/article/details/81880065" target="_blank">运用多进程与进程池对喜马拉雅进行简单的爬取</a>
+            </li>
+                        <li class="clearfix">
+                <a href="https://blog.csdn.net/weixin_42961627/article/details/81879936" target="_blank">多进程与多线程的原理以及 池与锁的应用</a>
+            </li>
+                        <li class="clearfix">
+                <a href="https://blog.csdn.net/weixin_42961627/article/details/81879892" target="_blank">妹子图 网站的爬取 : 应用了多进程与进程池</a>
+            </li>
+                        <li class="clearfix">
+                <a href="https://blog.csdn.net/weixin_42961627/article/details/81751102" target="_blank">雪球网 发布信息 requests 爬取</a>
+            </li>
+                        <li class="clearfix">
+                <a href="https://blog.csdn.net/weixin_42961627/article/details/81639583" target="_blank">mysql 数据库 简单命令</a>
+            </li>
+                    </ul>
+    </div>
+</div>
+		    		    		    <div id="asideArchive" class="aside-box">
+    <h3 class="aside-title">归档</h3>
+    <div class="aside-content">
+        <ul class="archive-list">
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/weixin_42961627/article/month/2018/08">
+                    2018年8月                    <span class="count float-right">10篇</span>
+                </a>
+            </li>
+                    </ul>
+    </div>
+    </div>
+		    <div id="asideHotArticle" class="aside-box">
+	<h3 class="aside-title">热门文章</h3>
+	<div class="aside-content">
+		<ul class="hotArticle-list csdn-tracking-statistics tracking-click" data-mod="popu_521">
+							<li>
+					<a href="https://blog.csdn.net/weixin_42961627/article/details/81639499">from urllib import request 介绍以及用法</a>
+					<p class="read">阅读量：<span>455</span></p>
+				</li>
+							<li>
+					<a href="https://blog.csdn.net/weixin_42961627/article/details/81639575">cookie与session 介绍 区别,以及用法</a>
+					<p class="read">阅读量：<span>148</span></p>
+				</li>
+							<li>
+					<a href="https://blog.csdn.net/weixin_42961627/article/details/81639556">from urllib import parse 应用 与data 请求体的传递方式</a>
+					<p class="read">阅读量：<span>38</span></p>
+				</li>
+							<li>
+					<a href="https://blog.csdn.net/weixin_42961627/article/details/81880065">运用多进程与进程池对喜马拉雅进行简单的爬取</a>
+					<p class="read">阅读量：<span>25</span></p>
+				</li>
+							<li>
+					<a href="https://blog.csdn.net/weixin_42961627/article/details/81879936">多进程与多线程的原理以及 池与锁的应用</a>
+					<p class="read">阅读量：<span>24</span></p>
+				</li>
+					</ul>
+	</div>
+</div>
+		    <div id="asideNewComments" class="aside-box">
+    <h3 class="aside-title">最新评论</h3>
+    <div class="aside-content">
+        <ul class="newcomment-list">
+                        <li>
+                <a class="title text-truncate" target="_blank" href="https://blog.csdn.net/weixin_42961627/article/details/81639575#comments">cookie与session 介绍...</a>
+                <p class="comment">
+                    <a href="https://my.csdn.net/qq_42977174" class="user-name" target="_blank">qq_42977174</a>：ssm项目中怎么实现在线阅读                </p>
+            </li>
+                    </ul>
+    </div>
+</div>
+		<div id="asideFooter">
+			
+		<div class="aside-box">
+			<div id="kp_box_77" data-pid="57" data-track-view='{"mod":"kp_popu_77","con":",,"}'><script type="text/javascript" src="//rabc1.iteye.com/common/web/site/9i6gu.js?av=neunkwb"></script></div><script>$(function(){csdn.track.viewCheck($("#kp_box_77"));});</script>		</div>
+				<div class="aside-box">
+			<div class="persion_article">
+			</div>
+		</div>
+	</div>
+</aside>
+<script src="https://csdnimg.cn/pubfooter/js/publib_footer-1.0.3.js" data-isfootertrack="false" type="text/javascript"></script>
+<script>
+	$("a.flexible-btn").click(function(){
+		$(this).parents('div.aside-box').removeClass('flexible-box');
+		$(this).remove();
+	})
+</script>
+</div>
+<div class="mask-dark"></div>
+<div class="pulllog-box" style="display: block;">
+	<div class="pulllog clearfix">
+		<span class="text float-left">
+            <div id="dmp_ad_69"><div id="kp_box_75" data-pid="69" data-track-view='{"mod":"kp_popu_75","con":",,"}'><div style="float:left;margin-right:5px;border:1px solid #f13d3d;padding:2px 5px 0px 5px;">
+<a href="https://www.csdn.net/2018dev/?utm_source=blogtextlink" target="_blank" style="color:#f13d3d;font-weight:bold;text-decoration:none;font-size:15px;">开发者调查</a>
+</div>
+
+<div style="float:left;margin-right:5px;border:1px solid #000;padding:2px 5px 0px 5px;background:#000;">
+<a href="http://ai2018.csdn.net/?utm_source=bkxxl" target="_blank" style="color:#fff;font-weight:bold;text-decoration:none;font-size:15px;">AI开发者大会日程曝光</a>
+</div>
+
+<div style="float:left;margin-right:5px;border:1px solid #f13d3d;padding:2px 5px 0px 5px;">
+<a href="https://gitbook.cn/gitchat/1024developer?utm_source=wzl1022" target="_blank" style="color:#f13d3d;font-weight:bold;text-decoration:none;font-size:15px;">全场课程特价最后 1 天</a>
+</div>
+
+<div style="float:left;">
+<script type="text/javascript" src="//rabc1.iteye.com/common/js/ndr3h.js?b=wosyvccl"></script>
+</div></div><script>$(function(){csdn.track.viewCheck($("#kp_box_75"));});</script></div>            		</span>
+		<div class="pulllog-btn float-right clearfix">
+            <div class="float-left csdn-tracking-statistics tracking-click" data-mod="popu_557">
+                <a class="pulllog-login">登录</a>
+            </div>
+            <div class="pulllog-sigin float-left csdn-tracking-statistics tracking-click" data-mod="popu_558">
+                <a href="https://passport.csdn.net/account/mobileregister" target="_blank">注册</a>
+            </div>
+            <button class="btn-close">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#csdnc-times"></use>
+                </svg>
+            </button>
+		</div>
+	</div>
+</div>
+<div id="loginWrap" style="display:none"></div>
+<div class="tool-box">
+	<ul class="meau-list">
+		<li class="btn-like-box ">
+			<button class=" low-height hover-box btn-like " title="点赞">
+				<svg class="icon active hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-thumbsup-ok"></use>
+				</svg>
+				<svg class="icon no-active hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-thumbsup"></use>
+				</svg>
+				<span class="hover-show text-box text">
+					<span class="no-active">点赞</span>
+					<span class="active">取消点赞</span>
+				</span>
+				<p>0</p>
+			</button>
+		</li>
+		<li class="">
+						<a class="btn-comments low-height hover-box" title="写评论" href="#commentBox">
+				<svg class="icon hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-comments"></use>
+				</svg>
+				<span class="hover-show text">评论</span>
+				<p class="">
+										</p>
+			</a>
+		</li>
+		<li class="toc-container-box" id="liTocBox">
+			<button class="btn-toc low-height hover-box" title="目录">
+				<svg class="icon hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-contents"></use>
+				</svg>
+				<span class="hover-show text">目录</span>
+			</button>
+			<div class="toc-container">
+				<div class="pos-box">
+					<div class="icon-arrow"></div>
+					<div class="scroll-box">
+						<div class="toc-box"></div>
+					</div>
+				</div>
+				<div class="opt-box">
+					<button class="btn-opt prev nomore" title="向上">
+						<svg class="icon" aria-hidden="true">
+							<use xlink:href="#csdnc-chevronup"></use>
+						</svg>
+					</button>
+					<button class="btn-opt next">
+						<svg class="icon" aria-hidden="true">
+							<use xlink:href="#csdnc-chevrondown"></use>
+						</svg>
+					</button>
+				</div>
+			</div>
+		</li>
+		<li>
+			<button class="btn-bookmark low-height hover-box" title="收藏">
+				<svg class="icon active hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-bookmark-ok"></use>
+				</svg>
+				<svg class="icon no-active hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-bookmark"></use>
+				</svg>
+					<span class="hover-show text">收藏</span>
+				<!-- <span class="hover-show text-box text">
+					<span class="no-active">收藏</span>
+					<span class="active">取消收藏</span>
+				</span> -->
+			</button>
+		</li>
+				<li class="bdsharebuttonbox">
+			<button class="btn-comments low-height hover-box" >
+				<a href="#" class="bds_weixin clear-share-style" data-cmd="weixin" title="手机看"></a>
+				<svg class="icon hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-wechat"></use>
+				</svg>
+				<span class="hover-show text text3">
+					手机看
+				</span>
+			</button>
+		</li>
+							<li class="widescreen-hide">
+				<a class="btn-comments low-height hover-box" href="https://blog.csdn.net/weixin_42961627/article/details/81639394" title="数据统计地址">
+					<svg class="icon hover-hide" aria-hidden="true">
+						<use xlink:href="#csdnc-chevronleft"></use>
+					</svg>
+					<span class="hover-show text text3">上一篇</span>
+				</a>
+			</li>
+								<li class="widescreen-hide">
+			<a class="btn-comments hover-box low-height" href="https://blog.csdn.net/weixin_42961627/article/details/81639556" title="from urllib import parse 应用 与data 请求体的传递方式">
+				<svg class="icon hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-chevronright"></use>
+				</svg>
+				<span class="hover-show text text3">下一篇</span>
+			</a>
+		</li>
+				<li class="bdsharebuttonbox _360_interactive"style="margin-top: 8px;"><div id="kp_box_97" data-pid="73" data-track-view='{"mod":"kp_popu_97","con":",,"}'><script type="text/javascript" src="//cjhd.mediav.com/js/interactive_plugin.js"></script> 
+			<style>
+				#_360_interactive > *{
+					 margin-left: -8px;
+				}
+			</style>
+			<div id="_360_interactive" > 
+				<script> INTERACTIVE_PLUGIN.render({ showid : 'N0ufqn', w: 60, h: 60, type: 'hover', placeholderId: '_360_interactive' }); </script> 
+			</div>
+			<img src="//img-ads.csdn.net/2016/201608021757063065.png" style="margin: 0 auto;display: block;" alt=""></div><script>$(function(){csdn.track.viewCheck($("#kp_box_97"));});</script></li>		<!-- 宽屏更多按钮 -->
+		<li class="widescreen-more">
+			<a class="btn-comments chat-ask-button low-height hover-box" title="快问" href="#chatqa">
+				<svg class="icon hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-more"></use>
+				</svg>
+				<span class="hover-show text">更多</span>
+				
+			</a>
+			<ul class="widescreen-more-box">
+													<li class="widescreen-more">
+						<a class="btn-comments low-height hover-box" href="https://blog.csdn.net/weixin_42961627/article/details/81639394" title="数据统计地址">
+							<svg class="icon hover-hide" aria-hidden="true">
+								<use xlink:href="#csdnc-chevronleft"></use>
+							</svg>
+							<span class="hover-show text text3">上一篇</span>
+						</a>
+					</li>
+																<li class="widescreen-more">
+					<a class="btn-comments hover-box low-height" href="https://blog.csdn.net/weixin_42961627/article/details/81639556" title="from urllib import parse 应用 与data 请求体的传递方式">
+						<svg class="icon hover-hide" aria-hidden="true">
+							<use xlink:href="#csdnc-chevronright"></use>
+						</svg>
+						<span class="hover-show text text3">下一篇</span>
+					</a>
+				</li>
+							</ul>
+		</li>
+	</ul>
+</div>
+<script>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "1", "bdMiniList": false, "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'https://csdnimg.cn/static/api/js/share.js?v=89860594'];</script>
+<script>
+    var recommendCount = 10;
+    recommendCount = recommendCount > 1 ? (recommendCount + (recommendCount>6 ? 2 : 1)) : recommendCount;
+    var articleTit = articleTitles;
+    var ChannelId = 31;
+    var articleId = "81639499";
+    var commentscount = 0;
+    var islock = false;
+    var curentUrl = "https://blog.csdn.net/weixin_42961627/article/details/81639499";
+    var myUrl = "https://my.csdn.net/";
+    //1禁止评论，2正常
+    var commentAuth = 2;
+    //百度搜索
+    var baiduKey = "from+urlib+import+request";
+    var needInsertBaidu = false;
+    // 代码段样式
+    var codeStyle = 'dracula';
+		var highlight = ["from","urllib","import","request","\u4ecb\u7ecd","\u4ee5\u53ca","\u7528\u6cd5"];//高亮数组
+		// 相关推荐博主数据
+    var RecommendBlogExpertList = [{"user_name":"u010603691","nick_name":"\u5251\u4fa0365","avatar":"https:\/\/avatar.csdn.net\/F\/7\/D\/3_u010603691.jpg","is_expert":false,"article_count":28},{"user_name":"u011037149","nick_name":"S5\u6797\u98ce","avatar":"https:\/\/avatar.csdn.net\/8\/9\/5\/3_u011037149.jpg","is_expert":false,"article_count":91},{"user_name":"syh_486_007","nick_name":"\u4e8c\u8fdb\u5236\u7a0b\u5e8f\u733f","avatar":"https:\/\/avatar.csdn.net\/2\/4\/F\/3_syh_486_007.jpg","is_expert":false,"article_count":157},{"user_name":"Together_CZ","nick_name":"Together_CZ","avatar":"https:\/\/avatar.csdn.net\/6\/A\/A\/3_together_cz.jpg","is_expert":false,"article_count":628},{"user_name":"qq_22222499","nick_name":"csdn\u4fa0","avatar":"https:\/\/avatar.csdn.net\/1\/7\/C\/3_qq_22222499.jpg","is_expert":false,"article_count":205},{"user_name":"topleeyap","nick_name":"Money\u591a\u591a","avatar":"https:\/\/avatar.csdn.net\/0\/F\/F\/3_topleeyap.jpg","is_expert":false,"article_count":83},{"user_name":"vivian_ll","nick_name":"vivian_ll","avatar":"https:\/\/avatar.csdn.net\/B\/4\/4\/3_vivian_ll.jpg","is_expert":false,"article_count":102},{"user_name":"tianbo77","nick_name":"tianbo77","avatar":"https:\/\/avatar.csdn.net\/E\/9\/F\/3_tianbo77.jpg","is_expert":false,"article_count":13},{"user_name":"mwmoo","nick_name":"mwmoo","avatar":"https:\/\/avatar.csdn.net\/B\/B\/9\/3_mwmoo.jpg","is_expert":false,"article_count":56},{"user_name":"chen1540524015","nick_name":"chen123lin","avatar":"https:\/\/avatar.csdn.net\/2\/E\/C\/3_chen1540524015.jpg","is_expert":false,"article_count":46}];
+
+		var articleType = 1;
+		var CopyrightContent = '';
+</script>
+<script src="https://csdnimg.cn/public/sandalstrap/1.4/js/sandalstrap.min.js"></script>
+<script src="https://csdnimg.cn/release/phoenix/vendor/pagination/paging.js"></script>
+<script src='https://csdnimg.cn/public/common/gotop/js/goTop-v1.0.min.js?v201803151422'></script>
+<script>
+    GoTop({
+        right: 8,
+        hasReport: true,
+        reportFun: function() {
+            showReport(false,articleTit);
+        }
+    })
+</script>
+<script src="https://g.csdnimg.cn/login-box/1.0.1/login-box.js"></script>
+<script src="https://csdnimg.cn/release/phoenix/template/js/common-946dc75567.min.js"></script>
+<script src="https://csdnimg.cn/release/phoenix/template/js/detail-8fab6c9fc5.min.js"></script>
+<script src="https://csdnimg.cn/release/phoenix/themes/skin3-template/skin3-template-9376486353.min.js"></script>
+<script src="//g.csdnimg.cn/fixed-sidebar/1.0.5/fixed-sidebar.js" type="text/javascript"></script>
+<script src="https://csdnimg.cn/search/baidu_search-1.1.2.js?v=201802071056&autorun=true&install=true&keyword=from+urlib+import+request"  type="text/javascript"></script>
+</body>
+<!-- 第四范式SDK -->
+
+<!-- 高亮未与 markdown兼容  -->
+	<link rel="stylesheet" href="https://csdnimg.cn/release/blog_editor_html/release1.3.1/ckeditor/plugins/chart/chart.css" />
+	<script type="text/javascript" src="https://csdnimg.cn/release/blog_editor_html/release1.3.1/ckeditor/plugins/chart/lib/chart.min.js"></script>
+	<script type="text/javascript" src="https://csdnimg.cn/release/blog_editor_html/release1.3.1/ckeditor/plugins/chart/widget2chart.js"></script>
+	<link rel="stylesheet" href="https://csdnimg.cn/release/blog_editor_html/release1.3.1/ckeditor/plugins/codesnippet/lib/highlight/styles/dracula.css">
+	<script type="text/javascript" src="https://csdnimg.cn/release/phoenix/production/pc_wap_common-9e177e0136.js" /></script>
+
+	<script type="text/javascript">
+	$(function(){
+		var allEscRegex = /&(lt|gt|amp|quot|nbsp|shy|#\d{1,5});/g,
+		    namedEntities = {
+					lt: '<',
+					gt: '>',
+					amp: '&',
+					quot: '"',
+					nbsp: '\u00a0',
+					shy: '\u00ad'
+				}
+		var allEscDecode = function( match, code ) {
+				return namedEntities[ code ];
+		};
+		htmlDecodeAttr = function( text ) {
+				return text.replace( allEscRegex, allEscDecode );
+		}
+	  hljs.initHighlightingOnLoad();
+	  hljs.initCopyButtonOnLoad();
+	  hljs.initLineNumbersOnLoad();
+		if($('pre .language-plain').length>0){
+			$('pre .language-plain').each(function(i,e){
+				var highlightRe = hljs.highlightAuto(htmlDecodeAttr(e.innerHTML))
+				e.innerHTML = highlightRe.value;
+				e.className = 'language-'+highlightRe.language;
+			});
+		}
+	})
+	</script>
+<script type="text/javascript" src="//g.csdnimg.cn/check-adblock/1.0.9/check-adblock.js"></script>
+
+<script type="text/javascript" src="https://static-blog.csdn.net/mdeditor/public/res/bower-libs/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            "HTML-CSS": {
+                    linebreaks: { automatic: true, width: "94%container" },
+                    imageFont: null
+            },
+            tex2jax: {
+                preview: "none"
+            },
+            mml2jax: {
+                preview: 'none'
+            }
+    });
+</script>
+</html>
