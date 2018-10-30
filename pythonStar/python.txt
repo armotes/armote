@@ -1,0 +1,29 @@
+安装pygame:
+python -m pip install --user pygame-1.9.2a0-cp35-none-win32.whl
+
+如果版本不对就将当前版本进行升级:
+继续cmd:
+python -m pip install --upgrade pip
+
+即可完成升级
+最新版
+https://www.lfd.uci.edu/~gohlke/pythonlibs/c2/d7
+书上面的版本
+https://bitbucket.org/pygame/pygame/downloads/?tab=downloads
+
+
+
+matplotlib下载:
+python -m pip install matplotlib  -i https://pypi.douban.com/simple
+
+pygal下载
+python -m pip install --user pygal
+
+beautifulsoup4下载
+python -m pip install beautifulsoup4
+
+html5lib下载
+python -m pip install html5lib
+
+pyMysql下载
+python -m pip install pyMysql
